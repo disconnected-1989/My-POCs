@@ -1,14 +1,15 @@
-There is a lack of path checking within the extension installation code of Suwayomi that can lead to ID or even RCE if the right conditions are met.
+There is a lack of path checking within the extension installation code of the Suwayomi manga reader that can lead to Information Disclosure or even RCE if the right conditions are met.
 This affects the docker version and (AFAIK) all the native versions.
-This issue has been fixed in the codebase, and I am releasing this info after the agreed disclosure date. 
+This issue has been fixed in the codebase, and I am releasing this info after the agreed upon disclosure date. 
 
 
 
 ## Information Disclosure
 
-You can leak the installation directory by modifying the filename parameter within the POST request when installing an extension, and prepending a nonexistent path onto it. 
+You can leak the installation directory by modifying the filename parameter within the POST request for installing an extension, and prepending a nonexistent path onto it. 
 Like so:
 
+```
 POST /api/graphql HTTP/1.1
 Host: localhost:4567
 Content-Length: 1532
@@ -39,6 +40,7 @@ Content-Type: application/vnd.android.package-archive
 "APK CONTENTS HERE"
 
 ------WebKitFormBoundarym08joRbyW9U3U8AB--
+```
 
 The server will return an error message containing the full path of the installation.
 
@@ -46,7 +48,8 @@ The server will return an error message containing the full path of the installa
 ## RCE
 
 The file path returned by the previous bug can be used to provide the username from the home directory, if Suwayomi is being run on; MAC, Windows, or with the standalone jar.
-This could be use for brute forcing the password if there is no SSH running.
+
+This could be used for brute forcing the password for that username against any available services like FTP, SMB, SSH, etc.
 #Linux
 If SSH is running you can replace all the APK contents within the POST request with your ssh pubkey and modify the filepath to drop it into the authorized keys file.
 
@@ -54,4 +57,4 @@ If SSH is running you can replace all the APK contents within the POST request w
 I haven't tested this however I imagine you could overwrite the C:\Users\{username}\desktop.ini with an SMB file path to a Responder instance.
 
 #MAC
-I'm not a Mac owner 😢 so I don't know how RCE on there would work.
+I'm not a Mac owner so I don't know how RCE on there would work.
