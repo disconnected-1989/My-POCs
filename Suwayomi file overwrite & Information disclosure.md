@@ -50,11 +50,11 @@ The server will return an error message containing the full path of the installa
 The file path returned by the previous bug can be used to provide the username from the home directory, if Suwayomi is being run on; MAC, Windows, or with the standalone jar.
 
 This could be used for brute forcing the password for that username against any available services like FTP, SMB, SSH, etc.
-#Linux
+**Linux**
 If SSH is running you can replace all the APK contents within the POST request with your ssh pubkey and modify the filepath to drop it into the authorized keys file.
 
-#Windows
+**Windows**
 I haven't tested this however I imagine you could overwrite the C:\Users\{username}\desktop.ini with an SMB file path to a Responder instance.
 
-#MAC
+**MAC**
 I'm not a Mac owner so I don't know how RCE on there would work.
