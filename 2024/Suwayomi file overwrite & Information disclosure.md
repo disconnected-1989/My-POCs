@@ -57,4 +57,6 @@ If SSH is running you can replace all the APK contents within the POST request w
 I haven't tested this however I imagine you could overwrite the C:\Users\{username}\desktop.ini with an SMB file path to a Responder instance.
 
 **MAC**
-I'm not a Mac owner so I don't know how RCE on there would work.
+I'm not a Mac owner so I don't know what RCE on there would rely on.
+
+See patches [0b192c](https://github.com/Suwayomi/Suwayomi-Server/commit/0b192cfa5243584d734b541c2c5451a50edd577e) and [3af8e3](https://github.com/Suwayomi/Suwayomi-Server/commit/3af8e395bd6f48ee7ed39011115dc190fa99a7e0)
