@@ -54,7 +54,7 @@ This could be used for brute forcing the password for that username against any 
 If SSH is running you can replace all the APK contents within the POST request with your ssh pubkey and modify the filepath to drop it into the authorized keys file.
 
 **Windows**
-I haven't tested this however I imagine you could overwrite the C:\Users\{username}\desktop.ini with an SMB file path to a Responder instance.
+I haven't tested this however I imagine you could overwrite the ``C:\Users\{username}\\SOMEFILE`` with a malicious link.
 
 **MAC**
 I'm not a Mac owner so I don't know what RCE on there would rely on.
