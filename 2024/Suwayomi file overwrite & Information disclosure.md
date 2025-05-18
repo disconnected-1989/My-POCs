@@ -1,5 +1,7 @@
 There is a lack of path checking within the extension installation code of the [Suwayomi manga reader](https://github.com/Suwayomi/Suwayomi-Server) that can lead to Information Disclosure or even RCE if the right conditions are met.
+
 This affects the docker version and (AFAIK) all the native versions.
+
 This issue has been fixed in the codebase, and I am releasing this info after the agreed upon disclosure date. 
 
 
@@ -53,14 +55,19 @@ This could be used for brute forcing the password for that username against any 
 
 
 **Linux**
-Prerequisites: SSHD running; Suwayomi-Server running as a user account.
+
+Prerequisites: SSHD running with Suwayomi-Server running as a user account.
+
 Using the file path from the ID bug you can replace all the APK contents within the POST request with your ssh pubkey and modify the filepath to drop it into the user's authorized keys file.
+
 Alternatively if SSHD isn't running you can put a netcat reverse shell inside the .bashrc, granting RCE with the caveat of overwriting the .bashrc properties.
 
 **Windows**
+
 I haven't tested this however I imagine you could overwrite the ``C:\Users\{username}\\SOMEFILE`` with a malicious link.
 
 **MAC**
+
 I'm not a Mac owner so I don't know what RCE on there would rely on.
 
 See patches [0b192c](https://github.com/Suwayomi/Suwayomi-Server/commit/0b192cfa5243584d734b541c2c5451a50edd577e) and [3af8e3](https://github.com/Suwayomi/Suwayomi-Server/commit/3af8e395bd6f48ee7ed39011115dc190fa99a7e0)
