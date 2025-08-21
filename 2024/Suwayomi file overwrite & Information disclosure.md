@@ -40,7 +40,7 @@ Content-Disposition: form-data; name="map"
 Content-Disposition: form-data; name="1"; filename="../ILoveHelloKitty1234!@#$/test.apk"
 Content-Type: application/vnd.android.package-archive
 
-"APK CONTENTS HERE"
+"FILEPATH TEST"
 
 ------WebKitFormBoundarym08joRbyW9U3U8AB--
 ```
