@@ -8,7 +8,8 @@ This issue has been fixed in the codebase, and I am releasing this info after th
 
 ## Information Disclosure
 
-You can leak the installation directory by modifying the filename parameter within the POST request for installing an extension, and prepending a nonexistent path onto it. 
+You can leak the installation directory by modifying the filename parameter within the POST request for installing an extension, and prepending a nonexistent path onto it.
+There is client side JS checking whether you upload an APK, this can be be bypassed using a text file with an APK extention or by changing the extension using Burpsuite intercept.
 Like so:
 
 ```
