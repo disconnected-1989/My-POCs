@@ -36,7 +36,7 @@ Content-Disposition: form-data; name="map"
 
 {"1":["variables.file"]}
 ------WebKitFormBoundarym08joRbyW9U3U8AB
-Content-Disposition: form-data; name="1"; filename="../ILoveHelloKitty1234!@#$/xckd.apk"
+Content-Disposition: form-data; name="1"; filename="../ILoveHelloKitty1234!@#$/test.apk"
 Content-Type: application/vnd.android.package-archive
 
 "APK CONTENTS HERE"
@@ -51,8 +51,11 @@ The server will return an error message containing the full path of the installa
 
 The file path returned by the previous bug could potentially be used to provide the username from the home directory, if Suwayomi is being run on; MAC, Windows, or with the standalone jar.
 
-This could be used for brute forcing the password for that username against any available services like FTP, SMB, SSH, etc.
+This could be used for brute forcing the password for that username against any available services like; FTP, SMB, SSH, etc.
 
+
+There is also a file overwrite vulnerability that could achieve remote code execution on Linux.
+This bug can be used to create and overwrite files with any content of your choice.
 
 **Linux**
 
@@ -64,10 +67,10 @@ Alternatively if SSHD isn't running you can put a netcat reverse shell inside th
 
 **Windows**
 
-I haven't tested this however I imagine you could overwrite the ``C:\Users\{username}\\SOMEFILE`` with a malicious link.
+I haven't tested this however I imagine you could overwrite the ``C:\Users\{username}\SOMEFILE`` with a malicious link.
 
 **MAC**
 
-I'm not a Mac owner so I don't know what RCE on there would rely on.
+I don't own a Mac so I don't know what RCE on there would rely on.
 
 See patches [0b192c](https://github.com/Suwayomi/Suwayomi-Server/commit/0b192cfa5243584d734b541c2c5451a50edd577e) and [3af8e3](https://github.com/Suwayomi/Suwayomi-Server/commit/3af8e395bd6f48ee7ed39011115dc190fa99a7e0)
